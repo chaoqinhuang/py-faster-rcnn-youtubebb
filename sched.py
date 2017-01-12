@@ -9,15 +9,11 @@ vers_to_run = [6,65,66,67,68,69,71,42,43,36,37]
 
 for index in range(0,len(vers_to_run)):
 
-  call('rm -rf data/VOCdevkit2007/VOC2007',shell=True)
-
   call('rm -rf data/VOCdevkit2007',shell=True)
-
-  call('ln -s /datasets/voc-2007 data/VOCdevkit2007',shell=True)
 
   call('ln -s /datasets/voc-2007/v'+
        str(vers_to_run[index])+
-       ' data/VOCdevkit2007/VOC2007',shell=True)
+       ' data/VOCdevkit2007',shell=True)
 
   print('\nRunning with Version '+str(vers_to_run[index])+'\n')
 
