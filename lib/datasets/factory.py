@@ -3,6 +3,8 @@
 # Copyright (c) 2015 Microsoft
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Ross Girshick
+#
+# Youtube BoundingBox addition by Mark Buckler
 # --------------------------------------------------------
 
 """Factory method for easily getting imdbs by name."""
@@ -11,6 +13,7 @@ __sets = {}
 
 from datasets.pascal_voc import pascal_voc
 from datasets.coco import coco
+from datasets.youtubebb import youtubebb
 import numpy as np
 
 # Set up voc_<year>_<split> using selective search "fast" mode
@@ -30,6 +33,12 @@ for year in ['2015']:
     for split in ['test', 'test-dev']:
         name = 'coco_{}_{}'.format(year, split)
         __sets[name] = (lambda split=split, year=year: coco(split, year))
+
+# Set up youtubebb_<year>_<split> using selective search "fast" mode
+for year in ['2017']:
+    for split in ['train', 'val', 'trainval', 'test']:
+        name = 'youtubebb_{}_{}'.format(year, split)
+        __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
 
 def get_imdb(name):
     """Get an imdb (image database) by name."""
