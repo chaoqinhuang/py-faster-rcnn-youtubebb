@@ -38,7 +38,7 @@ for year in ['2015']:
 for year in ['2017']:
     for split in ['train', 'val', 'trainval', 'test']:
         name = 'youtubebb_{}_{}'.format(year, split)
-        __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
+        __sets[name] = (lambda split=split, year=year: youtubebb(split, year))
 
 def get_imdb(name):
     """Get an imdb (image database) by name."""
