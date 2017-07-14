@@ -40,7 +40,6 @@ class youtubebb(imdb):
                          'horse','motorcycle','knife','airplane',
                          'skateboard','train','truck','zebra','toilet',
                          'dog','elephant','umbrella')
-                         # NOTE: "NONE" class not currently supported
         self._class_to_ind = dict(zip(self.classes, xrange(self.num_classes)))
         self._image_ext = '.jpg'
         self._image_index = self._load_image_set_index()
