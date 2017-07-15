@@ -25,7 +25,7 @@ import sys, os
 import multiprocessing as mp
 import cPickle
 import shutil
-
+import google.protobuf.text_format
 def parse_args():
     """
     Parse input arguments
