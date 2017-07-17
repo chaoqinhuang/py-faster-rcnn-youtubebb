@@ -1,7 +1,36 @@
-# NOTE
+### Setup
 
-This fork is specifically for use by the Approximate Vision project.
+`nvidia-docker run -it -v ~/scratch:/datasets mbuckler/faster-rcnn`
 
+Delete caches and old output
+
+`git pull`
+
+`ln -s /datasets/youtubebbdevkit2017 data/youtubebbdevkit2017`
+
+`mkdir data/imagenet_models`
+
+`ln -s /models/py-faster-rcnn/imagenet_models/VGG_CNN_M_1024.v2.caffemodel
+data/imagenet_models/VGG_CNN_M_1024.v2.caffemodel`
+
+### To train
+
+./tools/train_faster_rcnn_alt_opt.py --gpu 0 --net_name YoutubeBB --weights
+data/imagenet_models/VGG_CNN_M_1024.v2.caffemodel --imdb youtubebb_2017_train
+--cfg config.yml
+
+### To test
+
+./tools/test_net.py --gpu 0 --def
+models/YoutubeBB/faster_rcnn_alt_opt/faster_rcnn_test.pt --net
+/root/py-faster-rcnn/output/default/youtubebb_2017_train/YoutubeBB_faster_rcnn_final.caffemodel
+--cfg config.yml --imdb youtubebb_2017_test
+
+
+
+
+
+# Original README:
 
 ### Disclaimer
 
