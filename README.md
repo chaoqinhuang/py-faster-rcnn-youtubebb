@@ -1,6 +1,6 @@
 ### Setup
 
-`nvidia-docker run -it -v ~/scratch:/datasets mbuckler/faster-rcnn`
+`nvidia-docker run -it -v ~/models:/models -v ~/scratch:/datasets mbuckler/faster-rcnn`
 
 Delete caches and old output
 
