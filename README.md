@@ -1,8 +1,12 @@
+This Faster RCNN fork is for training and testing on the YouTube BoundingBox
+dataset. It uses the data in the VOC 2007 format. To download and convert the
+dataset see [this repo here](https://github.com/mbuckler/youtube-bb).
+
 ### Setup
 
-`nvidia-docker run -it -v ~/models:/models -v ~/scratch:/datasets mbuckler/faster-rcnn`
+Download and convert the dataset
 
-Delete caches and old output
+`nvidia-docker run -it -v ~/models:/models -v ~/scratch:/datasets mbuckler/faster-rcnn`
 
 `git pull`
 
@@ -15,16 +19,18 @@ data/imagenet_models/VGG_CNN_M_1024.v2.caffemodel`
 
 ### To train
 
-./tools/train_faster_rcnn_alt_opt.py --gpu 0 --net_name YoutubeBB --weights
+Delete caches and old output
+
+`./tools/train_faster_rcnn_alt_opt.py --gpu 0 --net_name YoutubeBB --weights
 data/imagenet_models/VGG_CNN_M_1024.v2.caffemodel --imdb youtubebb_2017_train
---cfg config.yml
+--cfg config.yml`
 
 ### To test
 
-./tools/test_net.py --gpu 0 --def
+`./tools/test_net.py --gpu 0 --def
 models/YoutubeBB/faster_rcnn_alt_opt/faster_rcnn_test.pt --net
 /root/py-faster-rcnn/output/default/youtubebb_2017_train/YoutubeBB_faster_rcnn_final.caffemodel
---cfg config.yml --imdb youtubebb_2017_test
+--cfg config.yml --imdb youtubebb_2017_test`
 
 
 
