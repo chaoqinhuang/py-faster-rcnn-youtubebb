@@ -4,28 +4,46 @@ dataset see [this repo here](https://github.com/mbuckler/youtube-bb).
 
 ### Setup
 
-Download and convert the dataset
+- [Download and convert the dataset](https://github.com/mbuckler/youtube-bb)
+
+- Run the docker container
 
 `nvidia-docker run -it -v ~/models:/models -v ~/scratch:/datasets mbuckler/faster-rcnn`
 
+- Get the updated changes
+
 `git pull`
+
+- Link to the dataset you downloaded and converted
 
 `ln -s /datasets/youtubebbdevkit2017 data/youtubebbdevkit2017`
 
+- Make space for the imagenet models
+
 `mkdir data/imagenet_models`
+
+- Link your model from your docker model volume. Alternatively you can use the
+  model download scripts provided, but the download links in those scripts are
+currently broken.
 
 `ln -s /models/py-faster-rcnn/imagenet_models/VGG_CNN_M_1024.v2.caffemodel
 data/imagenet_models/VGG_CNN_M_1024.v2.caffemodel`
 
 ### To train
 
-Delete caches and old output
+- Delete caches and old output
+
+`rm -rf data/cache`
+
+- Run training script
 
 `./tools/train_faster_rcnn_alt_opt.py --gpu 0 --net_name YoutubeBB --weights
 data/imagenet_models/VGG_CNN_M_1024.v2.caffemodel --imdb youtubebb_2017_train
 --cfg config.yml`
 
 ### To test
+
+- Run testing script
 
 `./tools/test_net.py --gpu 0 --def
 models/YoutubeBB/faster_rcnn_alt_opt/faster_rcnn_test.pt --net
