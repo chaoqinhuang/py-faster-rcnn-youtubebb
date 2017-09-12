@@ -1,4 +1,4 @@
 [submodule "caffe-fast-rcnn"]
 	path = caffe-fast-rcnn
-	url = https://github.com/rbgirshick/caffe-fast-rcnn.git
+	url = git@github.com:mbuckler/caffe-fast-rcnn-cuDNN-V5.git
 	branch = fast-rcnn
